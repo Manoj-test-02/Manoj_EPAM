@@ -1,0 +1,19 @@
+{
+  "cucumberautocomplete.steps": [
+    "e2e/step-definitions/*.ts"
+  ],
+  "cucumberautocomplete.syncfeatures": "e2e/features/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepsInvariants": true,
+  "cucumberautocomplete.customParameters": [],
+  "cucumberautocomplete.pages": {
+    "pages": "e2e/models/*page.ts"
+  },
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  },
+  "editor.acceptSuggestionOnEnter": "on"
+}
