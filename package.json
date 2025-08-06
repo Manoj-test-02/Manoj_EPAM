@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js -p default",
-    "test:tags": "cucumber-js -p default --tags",
-    "test:report": "cucumber-js -p default --format json:cucumber-report.json && node report.js",
+    "pretest": "rimraf reports && mkdir reports",
+    "test": "cucumber-js -p default --format json:reports/cucumber-report.json --format summary",
+    "report": "node generate-html-report.js",
+    "test:tags": "cucumber-js -p default --tags @replacetag --format json:reports/cucumber-report.json --format summary && ts-node report-generator.ts",
+    "test:valid": "cucumber-js -p default --tags @valid --format json:reports/cucumber-report.json --format summary && ts-node report-generator.ts",
+    "test:invalid": "cucumber-js -p default --tags @invalid --format json:reports/cucumber-report.json --format summary && ts-node report-generator.ts",
+    "test:locked": "cucumber-js -p default --tags @locked --format json:reports/cucumber-report.json --format summary && ts-node report-generator.ts",
+    "test:all": "cucumber-js -p default --format json:reports/cucumber-report.json --format summary && ts-node report-generator.ts",
     "prebuild": "rimraf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "rimraf reports && mkdir reports"
   },
   "keywords": [],
   "author": "",

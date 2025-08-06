@@ -1,0 +1,62 @@
+.error-message {
+    position: relative;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff3f3;
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+}
+
+.copy-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+.feature-description {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.scenario-heading {
+    color: #2c3e50;
+    margin: 15px 0;
+}
+
+.created-by {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: #666;
+    border-top: 1px solid #eee;
+}
+
+.test-summary {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.metadata-section {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}

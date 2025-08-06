@@ -1,0 +1,29 @@
+{
+  "Valid user login": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Invalid user login": {
+    "login_credentials": {
+      "username": "invalid_user",
+      "password": "wrong_password"
+    },
+    "expected": {
+      "error_message": "Wrong error message to make the test fail"
+    }
+  },
+  "Locked user login": {
+    "login_credentials": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "error_message": "Epic sadface: Sorry, this user has been locked out."
+    }
+  }
+}
