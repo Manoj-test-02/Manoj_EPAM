@@ -1,2 +1,0 @@
-# Manoj_EPAM
-This 
