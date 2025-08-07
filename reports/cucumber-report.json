@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "login-functionality;locked-user-login",
+        "id": "zero-script-login-functionality;successful-checkout-of-products",
         "keyword": "Scenario",
-        "line": 17,
-        "name": "Locked user login",
+        "line": 29,
+        "name": "Successful checkout of products",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1224000
+              "duration": 1956699
             }
           },
           {
@@ -22,46 +22,124 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 783507500
+              "duration": 503824700
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 18,
-            "name": "I am on the login page",
+            "line": 30,
+            "name": "I navigate to login page",
             "match": {
-              "location": "e2e\\step-definitions\\login.steps.ts:14"
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:12"
             },
             "result": {
               "status": "passed",
-              "duration": 2671528200
+              "duration": 1117109199
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 19,
-            "name": "I login directly with locked user credentials",
+            "line": 31,
+            "name": "I perform \"login as standard_user\"",
             "match": {
-              "location": "e2e\\step-definitions\\login.steps.ts:70"
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 139231499
+              "duration": 31581244199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I perform \"add item Sauce Labs Backpack to cart\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 87506950799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "I perform \"click on shopping cart\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65181899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "I perform \"click button labeled Checkout\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61957599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I perform \"fill checkout form with John, Doe, 12345\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 67378800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "I perform \"click button labeled Continue\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66855700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I perform \"click button labeled Finish\"",
+            "match": {
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57712399
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 20,
-            "name": "I should see account locked message",
+            "line": 38,
+            "name": "I verify \"text Thank you for your order is visible\"",
             "match": {
-              "location": "e2e\\step-definitions\\login.steps.ts:96"
+              "location": "e2e\\step-definitions\\zero-script.steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 8587100
+              "duration": 23053299
             }
           },
           {
@@ -69,37 +147,41 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 312550000
+              "duration": 330245699
             }
           }
         ],
         "tags": [
           {
-            "name": "@login",
+            "name": "@zero_script",
             "line": 1
           },
           {
-            "name": "@login_test",
-            "line": 16
+            "name": "@inventory",
+            "line": 28
           },
           {
-            "name": "@locked",
-            "line": 16
+            "name": "@checkout_successZero",
+            "line": 28
+          },
+          {
+            "name": "@zero",
+            "line": 28
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "login-functionality",
+    "id": "zero-script-login-functionality",
     "line": 2,
     "keyword": "Feature",
-    "name": "Login functionality",
+    "name": "Zero Script Login functionality",
     "tags": [
       {
-        "name": "@login",
+        "name": "@zero_script",
         "line": 1
       }
     ],
-    "uri": "e2e\\features\\login.feature"
+    "uri": "e2e\\features\\zeroscript.feature"
   }
 ]

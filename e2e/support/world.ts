@@ -21,14 +21,31 @@ export class CustomWorld extends World {
   }
 
   async cleanup(): Promise<void> {
-    if (this.page) {
-      await this.page.close();
+    try {
+      if (this.page) {
+        await this.page.close();
+        this.page = undefined;
+      }
+    } catch (error) {
+      console.error('Error closing page:', error);
     }
-    if (this.context) {
-      await this.context.close();
+    
+    try {
+      if (this.context) {
+        await this.context.close();
+        this.context = undefined;
+      }
+    } catch (error) {
+      console.error('Error closing context:', error);
     }
-    if (this.browser) {
-      await this.browser.close();
+    
+    try {
+      if (this.browser) {
+        await this.browser.close();
+        this.browser = undefined;
+      }
+    } catch (error) {
+      console.error('Error closing browser:', error);
     }
   }
 

@@ -17,7 +17,12 @@ const startTime = Date.now();
 
 Before(async function(this: CustomWorld) {
   totalScenarios++;
-  await this.init();
+  try {
+    await this.init();
+  } catch (error) {
+    console.error('Failed to initialize browser:', error);
+    throw error;
+  }
 });
 
 After(async function(this: CustomWorld, scenario: any) {
@@ -38,7 +43,13 @@ After(async function(this: CustomWorld, scenario: any) {
       break;
   }
 
-  await this.cleanup();
+  // Always cleanup, even on failure
+  try {
+    await this.cleanup();
+  } catch (error) {
+    console.error('Failed to cleanup browser:', error);
+    // Don't throw here, we don't want cleanup errors to mask test failures
+  }
 });
 
 AfterAll(async function() {
@@ -63,5 +74,22 @@ AfterAll(async function() {
     console.log('Email report sent successfully');
   } catch (error) {
     console.error('Failed to send email report:', error);
+  }
+
+  // Force cleanup any remaining browser processes
+  try {
+    const { exec } = require('child_process');
+    exec('taskkill /f /im chrome.exe /t', (error: any) => {
+      if (error && !error.message.includes('not found')) {
+        console.log('No Chrome processes to clean up');
+      }
+    });
+    exec('taskkill /f /im msedge.exe /t', (error: any) => {
+      if (error && !error.message.includes('not found')) {
+        console.log('No Edge processes to clean up');
+      }
+    });
+  } catch (error) {
+    console.log('Process cleanup completed');
   }
 });
