@@ -1,29 +1,38 @@
 {
-  "name": "manojepam",
+  "name": "rally-testcase-generator",
+  "displayName": "Rally Testcase Generator",
+  "description": "Fetch Rally description and generate Gherkin test cases using ChatGPT",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "cucumber-js -p default",
-    "test:tags": "cucumber-js -p default --tags",
-    "test:report": "cucumber-js -p default --format json:cucumber-report.json && node report.js",
-    "prebuild": "rimraf dist",
-    "build": "tsc"
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.70.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:rallyTestcaseGenerator.start"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "rallyTestcaseGenerator.start",
+        "title": "Rally: Generate Gherkin Test Cases"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./"
+  },
   "devDependencies": {
-    "@cucumber/cucumber": "^12.1.0",
-    "@cucumber/messages": "^28.1.0",
-    "@cucumber/pretty-formatter": "^2.0.1",
-    "@playwright/test": "^1.54.2",
-    "@types/cucumber": "^6.0.1",
     "@types/node": "^24.2.0",
-    "multiple-cucumber-html-reporter": "^3.9.3",
-    "playwright-bdd": "^8.3.1",
-    "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "@types/vscode": "^1.70.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "axios": "^1.11.0"
   }
 }

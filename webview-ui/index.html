@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rally Testcase Generator</title>
+</head>
+<body>
+  <h2>Rally Integration</h2>
+  <input placeholder="Rally API Key" id="apikey" /><br/>
+  <input placeholder="Project Name" id="project" /><br/>
+  <input placeholder="Scrum Team" id="team" /><br/>
+  <select id="type">
+    <option value="HierarchicalRequirement">User Story</option>
+    <option value="task">Task</option>
+    <option value="defect">Defect</option>
+  </select><br/>
+  <input placeholder="Object ID" id="objectid" /><br/>
+  <button onclick="fetchDescription()">Fetch Description</button>
+
+  <pre id="description"></pre>
+
+  <input placeholder="OpenAI API Key" id="gptkey" /><br/>
+  <button onclick="generateTestcases()">Generate Testcases</button>
+
+  <pre id="gherkin"></pre>
+
+  <script>
+    const vscode = acquireVsCodeApi();
+
+    function fetchDescription() {
+      const message = {
+        command: 'fetchDescription',
+        apiKey: document.getElementById('apikey').value,
+        project: document.getElementById('project').value,
+        team: document.getElementById('team').value,
+        type: document.getElementById('type').value,
+        id: document.getElementById('objectid').value
+      };
+      vscode.postMessage(message);
+    }
+
+    function generateTestcases() {
+      const message = {
+        command: 'generateTestcases',
+        gptKey: document.getElementById('gptkey').value,
+        description: document.getElementById('description').textContent
+      };
+      vscode.postMessage(message);
+    }
+
+    window.addEventListener('message', event => {
+      const message = event.data;
+      if (message.command === 'showDescription') {
+        document.getElementById('description').textContent = message.description;
+      } else if (message.command === 'showTestcases') {
+        document.getElementById('gherkin').textContent = message.gherkin;
+      }
+    });
+  </script>
+</body>
+</html>
