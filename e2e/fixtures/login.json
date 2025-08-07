@@ -1,0 +1,110 @@
+{
+  "Valid user login": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Add multiple products to cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Successful checkout of products": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Validate remove button functionality": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Remove product from cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Add and verify multiple products in cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Remove multiple products from cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Attempt checkout with empty cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Validate product prices in cart": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Add products after sorting": {
+    "login_credentials": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "url": "/inventory.html"
+    }
+  },
+  "Invalid user login": {
+    "login_credentials": {
+      "username": "invalid_user",
+      "password": "wrong_password"
+    },
+    "expected": {
+      "error_message": "Wrong error message to make the test fail"
+    }
+  },
+  "Locked user login": {
+    "login_credentials": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "expected": {
+      "error_message": "Epic sadface: Sorry, this user has been locked out."
+    }
+  }
+}

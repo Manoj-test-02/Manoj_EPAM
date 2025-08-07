@@ -1,0 +1,280 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;valid-user-login",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Valid user login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1677799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1267810200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am on the login page",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2340643200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I login with valid credentials",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 258838900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should be logged in successfully",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14915399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 533509500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@login_test",
+            "line": 4
+          },
+          {
+            "name": "@valid",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;invalid-user-login",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Invalid user login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 202299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 542380900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am on the login page",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2398409100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I login with invalid credentials",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139791400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should see account locked message",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:58"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 16104300,
+              "error_message": "Error: Expected error message \"Wrong error message to make the test fail\" but got \"Epic sadface: Username and password do not match any user in this service\"\n    at LoginPage.verifyErrorMessage (C:\\Manoj_EPAM\\Manoj_EPAM\\e2e\\models\\login.page.ts:33:13)\n    at async CustomWorld.<anonymous> (C:\\Manoj_EPAM\\Manoj_EPAM\\e2e\\step-definitions\\login.steps.ts:61:5)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 317407200
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@login_test",
+            "line": 10
+          },
+          {
+            "name": "@invalid",
+            "line": 10
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;locked-user-login",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Locked user login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 685217800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "I am on the login page",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2321620699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "I login with locked user credentials",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139192900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should see account locked message",
+            "match": {
+              "location": "e2e\\step-definitions\\login.steps.ts:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15477199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 309182699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@login_test",
+            "line": 16
+          },
+          {
+            "name": "@locked",
+            "line": 16
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login functionality",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
+    "uri": "e2e\\features\\login.feature"
+  }
+]

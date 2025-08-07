@@ -1,7 +1,50 @@
 
-# Playwright
+# Dependencies
 node_modules/
+package-lock.json
+
+# Playwright specific
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Report related files
+/reports/
+/reports/**/*
+cucumber-report.json
+cucumber-report.html
+**/html-report/
+**/test-report/
+**/execution-report/
+/.cucumber-report/
+report.json
+**/cucumber-json-reports/
+**/cucumber-html-reports/
+
+# Test artifacts
+/screenshots/
+/videos/
+/traces/
+/test-results/
+
+# IDE and OS specific files
+.DS_Store
+.idea/
+.vscode/
+*.log
+debug.log
+
+# Report directories
+/reports/
+/*reports/
+/test-report/
+/cucumber-report/
+/html-report/
+*.html
+*.json
+
+# Ignore all report related files
+**/reports/**
+**/*report*/
+*.log

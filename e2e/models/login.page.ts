@@ -22,7 +22,15 @@ export class LoginPage {
     await this.page.click(LoginPageModel.login_button);
   }
 
-  async getErrorMessage() {
+  async getErrorMessage(): Promise<string | null> {
+    await this.page.waitForSelector(LoginPageModel.error_message, { timeout: this.timeout });
     return await this.page.textContent(LoginPageModel.error_message);
+  }
+
+  async verifyErrorMessage(expectedMessage: string): Promise<void> {
+    const actualMessage = await this.getErrorMessage();
+    if (actualMessage !== expectedMessage) {
+      throw new Error(`Expected error message "${expectedMessage}" but got "${actualMessage}"`);
+    }
   }
 }
