@@ -1,0 +1,4 @@
+//Common step which can be used for all the scenario for login. 
+
+Given I am on the login page
+When I login with valid credentials
