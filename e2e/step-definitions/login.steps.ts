@@ -24,21 +24,59 @@ async function performLogin(world: CustomWorld) {
     throw new Error(`No test data found for scenario: ${scenarioName}`);
   }
   
-  const { username, password } = scenarioData.login_credentials;
-  await loginPage.login(username, password);
-  return scenarioData;
+  try {
+    const { username, password } = scenarioData.login_credentials;
+    await loginPage.login(username, password);
+    
+    // Add a small delay to ensure the login process is complete
+    await world.page?.waitForLoadState('networkidle');
+    
+    return scenarioData;
+  } catch (error) {
+    // Log any self-healing attempts that occurred during login
+    console.error(`Login attempt failed for scenario "${scenarioName}":`, error);
+    throw error;
+  }
 }
 
 When('I login with valid credentials', async function (this: CustomWorld) {
   await performLogin(this);
 });
 
+// Original login with self-healing for invalid credentials
 When('I login with invalid credentials', async function (this: CustomWorld) {
   await performLogin(this);
 });
 
+// Direct login without self-healing for invalid credentials
+When('I login directly with invalid credentials', async function (this: CustomWorld) {
+  const scenarioName = this.getScenarioName();
+  const scenarioData = (loginData as LoginJson)[scenarioName];
+  
+  if (!scenarioData) {
+    throw new Error(`No test data found for scenario: ${scenarioName}`);
+  }
+  
+  const { username, password } = scenarioData.login_credentials;
+  await loginPage.loginWithoutFallback(username, password);
+});
+
+// Original login with self-healing for locked user
 When('I login with locked user credentials', async function (this: CustomWorld) {
   await performLogin(this);
+});
+
+// Direct login without self-healing for locked user
+When('I login directly with locked user credentials', async function (this: CustomWorld) {
+  const scenarioName = this.getScenarioName();
+  const scenarioData = (loginData as LoginJson)[scenarioName];
+  
+  if (!scenarioData) {
+    throw new Error(`No test data found for scenario: ${scenarioName}`);
+  }
+  
+  const { username, password } = scenarioData.login_credentials;
+  await loginPage.loginWithoutFallback(username, password);
 });
 
 Then('I should be logged in successfully', async function (this: CustomWorld) {

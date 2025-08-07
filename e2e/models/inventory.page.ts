@@ -1,8 +1,13 @@
 import { Page } from '@playwright/test';
 import { InventoryPageModel } from './inventory.model';
+import { SelfHealingLocator } from '../support/self-healing-locator';
 
 export class InventoryPage {
-    constructor(private page: Page) {}
+    private selfHealing: SelfHealingLocator;
+
+    constructor(private page: Page) {
+        this.selfHealing = new SelfHealingLocator(page);
+    }
 
     // Checkout form selectors
     private readonly firstNameInput = '#first-name';
@@ -93,14 +98,12 @@ export class InventoryPage {
 
     async sortByPriceHighToLow() {
         try {
-            // Wait for and locate the sort dropdown
-            const dropdown = this.page.locator('select.product_sort_container');
+            // Use self-healing locator to find the sort dropdown
+            const dropdown = await this.selfHealing.findElement(
+                'select.product_sort_container',
+                'inventory.model.ts'
+            );
             
-            await dropdown.waitFor({ 
-                state: 'visible',
-                timeout: 10000 
-            });
-
             // Select the high to low option
             await dropdown.selectOption({ value: 'hilo' });
             
