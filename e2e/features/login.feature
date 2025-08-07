@@ -10,13 +10,13 @@ Feature: Login functionality
   @login_test @invalid
   Scenario: Invalid user login
     Given I am on the login page
-    When I login with invalid credentials
+    When I login directly with invalid credentials
     Then I should see account locked message
 
   @login_test @locked
   Scenario: Locked user login
     Given I am on the login page
-    When I login with locked user credentials
+    When I login directly with locked user credentials
     Then I should see account locked message
 
   @inventory @add_to_cart

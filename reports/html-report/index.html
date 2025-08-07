@@ -932,7 +932,7 @@ body.darkmode .navbar-text {
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">3</div>
+                <div class="total">1</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -943,7 +943,7 @@ body.darkmode .navbar-text {
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">66.67 %</td>
+                        <td class="percentage">0.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -952,7 +952,7 @@ body.darkmode .navbar-text {
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">33.33 %</td>
+                        <td class="percentage">100.00 %</td>
                     
                     
                     </tr>
@@ -995,7 +995,7 @@ body.darkmode .navbar-text {
                 
                 <tr>
                     <td class="meta-data-title">Total Tests</td>
-                    <td class="meta-data-data">3</td>
+                    <td class="meta-data-data">1</td>
                 </tr>
                 
                 <tr>
@@ -1070,7 +1070,7 @@ body.darkmode .navbar-text {
                     
                     <tr>
                         <td>
-                            <a href="features/95d507ae-c34e-410b-9214-824248e7c9ed-login-functionality.html">Login functionality</a>
+                            <a href="features/1a17823e-cac4-458a-9bb5-e81869b3ceb1-login-functionality.html">Login functionality</a>
                         </td>
                         <td class="text-center">
                             
@@ -1088,29 +1088,9 @@ body.darkmode .navbar-text {
                             
                             
                             
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
                             <i class="fa fa-tags fa-lg" data-bs-toggle="tooltip" data-placement="top"
-                               title="@login @login_test @valid @invalid @locked">
-                                <span>@login @login_test @valid @invalid @locked</span>
+                               title="@login @login_test @locked">
+                                <span>@login @login_test @locked</span>
                             </i>
                             
                             
@@ -1172,13 +1152,13 @@ body.darkmode .navbar-text {
                             
                         
                         
-                        <td>2025/08/07 00:28:05</td>
+                        <td>2025/08/07 19:42:33</td>
                         
                         
-                        <td>00:00:07.644</td>
+                        <td>00:00:07.645</td>
                         
-                        <td class="text-right ">3</td>
-                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
                         <td class="text-right ">1</td>
                         
                         
@@ -1257,13 +1237,14 @@ body.darkmode .navbar-text {
                     <h3>Failed Tests Summary</h3>
                     
             <div class="failure-detail">
-                <h4>Failed Scenario: Invalid user login</h4>
-                <p>Failed Step: I should see account locked message</p>
-                <div class="error-message" id="error-Invalid-user-login">
-                    <pre>Error: Expected error message "Wrong error message to make the test fail" but got "Epic sadface: Username and password do not match any user in this service"
-    at LoginPage.verifyErrorMessage (C:\Manoj_EPAM\Manoj_EPAM\e2e\models\login.page.ts:33:13)
-    at async CustomWorld.<anonymous> (C:\Manoj_EPAM\Manoj_EPAM\e2e\step-definitions\login.steps.ts:61:5)</pre>
-                    <button class="copy-button" onclick="copyError('Invalid-user-login')">Copy Error</button>
+                <h4>Failed Scenario: Locked user login</h4>
+                <p>Failed Step: I login with locked user credentials</p>
+                <div class="error-message" id="error-Locked-user-login">
+                    <pre>Error: Login failed: Login verification failed - user not redirected to inventory page
+    at LoginPage.login (C:\Manoj_EPAM\Manoj_EPAM\e2e\models\login.page.ts:65:13)
+    at async performLogin (C:\Manoj_EPAM\Manoj_EPAM\e2e\step-definitions\login.steps.ts:29:5)
+    at async CustomWorld.<anonymous> (C:\Manoj_EPAM\Manoj_EPAM\e2e\step-definitions\login.steps.ts:51:3)</pre>
+                    <button class="copy-button" onclick="copyError('Locked-user-login')">Copy Error</button>
                 </div>
             </div>
         
@@ -1391,7 +1372,7 @@ body.darkmode .navbar-text {
                         ],
                         datasets: [{
                             data: [
-                                2,
+                                0,
                                 1,
                                 0,
                                 0,
