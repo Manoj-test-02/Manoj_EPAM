@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "login-functionality;locked-user-login",
+        "id": "login-functionality;validate-product-prices-in-cart",
         "keyword": "Scenario",
-        "line": 17,
-        "name": "Locked user login",
+        "line": 79,
+        "name": "Validate product prices in cart",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1224000
+              "duration": 1239300
             }
           },
           {
@@ -22,46 +22,72 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 783507500
+              "duration": 501887100
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 18,
+            "line": 80,
             "name": "I am on the login page",
             "match": {
               "location": "e2e\\step-definitions\\login.steps.ts:14"
             },
             "result": {
               "status": "passed",
-              "duration": 2671528200
+              "duration": 2762208300
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 19,
-            "name": "I login directly with locked user credentials",
+            "line": 81,
+            "name": "I login with valid credentials",
             "match": {
-              "location": "e2e\\step-definitions\\login.steps.ts:70"
+              "location": "e2e\\step-definitions\\login.steps.ts:42"
             },
             "result": {
               "status": "passed",
-              "duration": 139231499
+              "duration": 191210200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 82,
+            "name": "I am on the inventory page",
+            "match": {
+              "location": "e2e\\step-definitions\\inventory.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16378999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 83,
+            "name": "I add products to cart",
+            "match": {
+              "location": "e2e\\step-definitions\\inventory.steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125486700
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 20,
-            "name": "I should see account locked message",
+            "line": 84,
+            "name": "product prices in cart should match inventory prices",
             "match": {
-              "location": "e2e\\step-definitions\\login.steps.ts:96"
+              "location": "e2e\\step-definitions\\inventory.steps.ts:105"
             },
             "result": {
               "status": "passed",
-              "duration": 8587100
+              "duration": 134657199
             }
           },
           {
@@ -69,7 +95,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 312550000
+              "duration": 385359999
             }
           }
         ],
@@ -79,12 +105,12 @@
             "line": 1
           },
           {
-            "name": "@login_test",
-            "line": 16
+            "name": "@inventory",
+            "line": 78
           },
           {
-            "name": "@locked",
-            "line": 16
+            "name": "@price_validation",
+            "line": 78
           }
         ],
         "type": "scenario"

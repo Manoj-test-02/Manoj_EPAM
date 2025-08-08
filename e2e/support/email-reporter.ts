@@ -24,23 +24,33 @@ export class EmailReporter {
     constructor() {
         const configPath = path.join(process.cwd(), 'projectconfig.json');
         const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-        this.config = this.resolveEnvironmentVariables(config.emailReport);
+        // Use config.email, not config.emailReport
+        this.config = this.resolveEnvironmentVariables(config.email);
     }
 
-    private resolveEnvironmentVariables(config: EmailConfig): EmailConfig {
+    private resolveEnvironmentVariables(config: any): EmailConfig {
         // Deep clone the config to avoid modifying the original
         const resolvedConfig = JSON.parse(JSON.stringify(config));
 
-        // Resolve environment variables for email and password
-        resolvedConfig.sender.email = this.getEnvValue(resolvedConfig.sender.email);
-        resolvedConfig.sender.appPassword = this.getEnvValue(resolvedConfig.sender.appPassword);
-
-        // Resolve recipients
-        if (Array.isArray(resolvedConfig.recipients)) {
-            resolvedConfig.recipients = resolvedConfig.recipients.map((recipient: string) => 
-                this.getEnvValue(recipient)
-            );
+        // Helper to resolve 'process.env.VAR' to actual env value
+        function resolveEnv(val: any) {
+            if (typeof val === 'string' && val.startsWith('process.env.')) {
+                const envVar = val.replace('process.env.', '');
+                return process.env[envVar] || '';
+            }
+            return val;
         }
+
+        // Map config structure to expected EmailConfig
+        resolvedConfig.sender = {
+            email: resolveEnv(config.from),
+            appPassword: resolveEnv(config.smtp?.auth?.pass)
+        };
+        resolvedConfig.recipients = resolveEnv(config.to)?.split(',') || [];
+        resolvedConfig.subject = resolveEnv(config.subject) || 'Test Automation Report';
+        resolvedConfig.includeHtmlReport = true;
+        resolvedConfig.includeSummary = true;
+        resolvedConfig.enabled = (resolveEnv(config.sendEmail) || '').toLowerCase() === 'true';
 
         return resolvedConfig;
     }

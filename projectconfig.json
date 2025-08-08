@@ -1,0 +1,21 @@
+{
+  "email": {
+    "from": "process.env.EMAIL_USER",
+    "to": "process.env.EMAIL_RECIPIENTS",
+    "subject": "Test Automation Report",
+    "smtp": {
+      "host": "process.env.SMTP_HOST",
+      "port": "process.env.SMTP_PORT",
+      "secure": "process.env.SMTP_SECURE",
+      "auth": {
+        "user": "process.env.EMAIL_USER",
+        "pass": "process.env.EMAIL_APP_PASSWORD"
+      }
+    },
+    "sendEmail": "process.env.SEND_EMAIL"
+  },
+  "report": {
+    "outputDir": "process.env.REPORT_OUTPUT_DIR",
+    "attachScreenshots": "process.env.ATTACH_SCREENSHOTS"
+  }
+}
