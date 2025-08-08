@@ -3,79 +3,45 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 
-// Load environment variables from .env file
 dotenv.config();
 
-interface EmailConfig {
-    enabled: boolean;
-    sender: {
-        email: string;
-        appPassword: string;
-    };
-    recipients: string[];
-    subject: string;
-    includeHtmlReport: boolean;
-    includeSummary: boolean;
-}
-
 export class EmailReporter {
-    private config: EmailConfig;
-
-    constructor() {
-        const configPath = path.join(process.cwd(), 'projectconfig.json');
-        const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-        this.config = this.resolveEnvironmentVariables(config.emailReport);
-    }
-
-    private resolveEnvironmentVariables(config: EmailConfig): EmailConfig {
-        // Deep clone the config to avoid modifying the original
-        const resolvedConfig = JSON.parse(JSON.stringify(config));
-
-        // Resolve environment variables for email and password
-        resolvedConfig.sender.email = this.getEnvValue(resolvedConfig.sender.email);
-        resolvedConfig.sender.appPassword = this.getEnvValue(resolvedConfig.sender.appPassword);
-
-        // Resolve recipients
-        if (Array.isArray(resolvedConfig.recipients)) {
-            resolvedConfig.recipients = resolvedConfig.recipients.map((recipient: string) => 
-                this.getEnvValue(recipient)
-            );
-        }
-
-        return resolvedConfig;
-    }
-
-    private getEnvValue(value: string): string {
-        if (value.startsWith('${') && value.endsWith('}')) {
-            const envVar = value.slice(2, -1);
-            const envValue = process.env[envVar];
-            if (!envValue) {
-                throw new Error(`Environment variable ${envVar} is not set`);
-            }
-            return envValue;
-        }
-        return value;
-    }
+    constructor() {}
 
     async sendTestReport(testResults: any) {
-        if (!this.config.enabled) {
-            console.log('Email reporting is disabled in projectconfig.json');
+        const sendEmail = (process.env.SEND_EMAIL || '').toLowerCase() === 'true';
+        if (!sendEmail) {
+            console.log('Email reporting is disabled via SEND_EMAIL in .env');
+            return;
+        }
+
+        const emailUser = process.env.EMAIL_USER;
+        const emailPass = process.env.EMAIL_APP_PASSWORD;
+        const recipients = process.env.EMAIL_RECIPIENTS;
+        const subject = process.env.EMAIL_SUBJECT || 'Test Automation Report';
+        const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+        const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
+        const smtpSecure = (process.env.SMTP_SECURE || 'true') === 'true';
+
+        if (!emailUser || !emailPass || !recipients) {
+            console.error('Missing email credentials or recipients in .env');
             return;
         }
 
         try {
             console.log('Setting up email transport with:', {
-                email: this.config.sender.email,
-                passwordLength: this.config.sender.appPassword?.length
+                email: emailUser,
+                passwordLength: emailPass?.length,
+                smtpHost, smtpPort, smtpSecure
             });
-            
+
             const transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
+                host: smtpHost,
+                port: smtpPort,
+                secure: smtpSecure,
                 auth: {
-                    user: this.config.sender.email,
-                    pass: this.config.sender.appPassword
+                    user: emailUser,
+                    pass: emailPass
                 },
                 debug: true
             });
@@ -84,9 +50,9 @@ export class EmailReporter {
             const attachments = await this.getAttachments();
 
             const mailOptions = {
-                from: this.config.sender.email,
-                to: this.config.recipients.join(','),
-                subject: this.config.subject,
+                from: emailUser,
+                to: recipients,
+                subject: subject,
                 html: htmlContent,
                 attachments
             };
@@ -143,8 +109,8 @@ export class EmailReporter {
 
     private async getAttachments(): Promise<any[]> {
         const attachments = [];
-
-        if (this.config.includeHtmlReport) {
+        const attachScreenshots = (process.env.ATTACH_SCREENSHOTS || 'true').toLowerCase() === 'true';
+        if (attachScreenshots) {
             const reportPath = path.join(process.cwd(), 'reports', 'html-report', 'index.html');
             if (fs.existsSync(reportPath)) {
                 attachments.push({
@@ -153,7 +119,6 @@ export class EmailReporter {
                 });
             }
         }
-
         return attachments;
     }
 }
