@@ -1,0 +1,194 @@
+/* Scroll down cue for hero section */
+.scroll-down-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 2.5rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.85;
+    animation: fadeIn 1.5s 1.2s both;
+    z-index: 10;
+}
+.scroll-down-cue .arrow {
+    font-size: 2.2rem;
+    color: #00e6d0;
+    animation: bounceDown 1.2s infinite alternate;
+    margin-bottom: 0.2em;
+}
+.scroll-down-cue .scroll-msg {
+    font-size: 1.05rem;
+    color: #fff;
+    background: rgba(0,230,208,0.08);
+    border-radius: 1em;
+    padding: 0.2em 1.1em;
+    margin-top: 0.1em;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px #00e6d022;
+}
+@keyframes bounceDown {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(18px); }
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0f2027;  /* fallback for old browsers */
+    background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+    color: #fff;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.section-hero {
+    background: rgba(0,0,0,0.7);
+    min-height: 100vh;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #00e6d0;
+    animation: fadeIn 2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    opacity: 0;
+}
+
+.section-title h2, .section-title h3 {
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+.welcome-visual {
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2em;
+    font-size: 1.25rem;
+    text-align: center;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+.welcome-highlight {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00e6d0;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 18px #00e6d099, 0 0 8px #fff2;
+    margin-bottom: 0.5em;
+    display: block;
+}
+.welcome-desc {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.2em;
+    display: block;
+    line-height: 1.7;
+    text-shadow: 0 2px 8px #0008;
+}
+@media (max-width: 600px) {
+    .welcome-visual {
+        font-size: 1rem;
+        gap: 0.7em;
+    }
+    .welcome-highlight {
+        font-size: 1.2rem;
+    }
+    .welcome-desc {
+        font-size: 0.98rem;
+    }
+}
+
+.gradient-reveal {
+    /* Use a white text color with opacity for fade-in, fallback for browsers without background-clip: text */
+    color: rgba(255,255,255,0.3);
+    transition: color 1s, opacity 1s;
+    opacity: 0.3;
+}
+.gradient-reveal.visible {
+    color: #fff;
+    opacity: 1;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gradient-reveal {
+        background: linear-gradient(90deg, #fff 0%, #00e6d0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+    .gradient-reveal.visible {
+        color: transparent;
+        opacity: 1;
+    }
+}
+
+.section-capabilities {
+    width: 100%;
+}
+
+.capabilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 2em 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: center;
+}
+
+.capabilities-list li {
+    background: rgba(0,230,208,0.1);
+    padding: 1em 2em;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    min-width: 320px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.section-links .icon-links {
+    display: flex;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.icon-link {
+    color: #00e6d0;
+    font-size: 2.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+.icon-link:hover {
+    color: #fff;
+    transform: scale(1.2) rotate(-8deg);
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .capabilities-list li {
+        min-width: 180px;
+        font-size: 1rem;
+    }
+}
